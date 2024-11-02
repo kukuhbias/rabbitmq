@@ -1,0 +1,13 @@
+### GET ALL ORDERS
+GET http://localhost:8010
+
+
+### CREATE ORDERS
+POST http://localhost:8010
+Content-Type: application/json
+
+{
+    "productName": "hp sumsang ",
+    "price": 351000,
+    "sellerName": "Edi S"
+}
