@@ -30,9 +30,13 @@ const orderController = {
   deleteOrder: async (req: Request, res: Response) => {
     try {
       const orderId = req.params.id;
+      const authKey = req.headers.authorization;
+      if (authKey !== "secret") {
+        return res.status(400).json({ message: "Unauthorized !" });
+      }
       const deleteOrder = await orderServices.deleteOrder(orderId);
       if (deleteOrder?.deletedCount === 0) {
-        return res.status(404).json({ message: "error Thread Not Found!" });
+        return res.status(404).json({ message: "error order Not Found!" });
       }
       return res
         .status(200)

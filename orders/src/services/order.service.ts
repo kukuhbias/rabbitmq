@@ -1,4 +1,5 @@
 import orderRepository from "../repositories/order.repository";
+import { rabbitmq } from "../utils/rabbitmq";
 
 const orderServices = {
   getAllOrders: async () => {
@@ -15,6 +16,13 @@ const orderServices = {
       price,
       sellerName
     );
+    const channel = await rabbitmq();
+    channel.sendToQueue(
+      "orderCreated",
+      Buffer.from(JSON.stringify(createOrders))
+    );
+    console.log(`Message send to Rabbitmq: ${JSON.stringify(createOrders)}`);
+
     return createOrders;
   },
 

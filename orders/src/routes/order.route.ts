@@ -8,3 +8,6 @@ OrderRouter.get("/", orderController.getAllOrders);
 
 // CREATE
 OrderRouter.post("/", orderController.createOrders);
+
+// DELETE
+OrderRouter.delete("/delete/:id", orderController.deleteOrder);
