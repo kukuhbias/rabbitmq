@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import { env } from "./env";
 
 export async function mongoConnect() {
   return await mongoose
-    .connect("mongodb://mongo-notifications:27017/notifications")
+    .connect(env.MONGO_URI)
     .then(() => {
       console.log("Connected to MongoDB");
     })
