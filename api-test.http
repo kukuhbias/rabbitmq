@@ -10,11 +10,11 @@ POST http://localhost:3003/orders/
 Content-Type: application/json
 
 {
-    "productName": "New Kindle ",
-    "price": 991000,
+    "productName": "New Kindle",
+    "price": "991000",
     "sellerName": "Edi S"
 }
 
 ### DELETE ORDERS
-DELETE http://localhost:8010/delete/67209b047f20ea4f0f62ea18
+DELETE http://localhost:3003/orders/delete/67209b047f20ea4f0f62ea18
 Authorization: secret

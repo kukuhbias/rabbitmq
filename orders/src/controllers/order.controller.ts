@@ -18,6 +18,14 @@ const orderController = {
         price,
         sellerName
       );
+      if (createOrders.error) {
+        return res
+          .status(400)
+          .json({
+            message: "Failed to create Orders format is not valid",
+            createOrders,
+          });
+      }
       return res
         .status(201)
         .json({ message: "Thread Successfull created", createOrders });

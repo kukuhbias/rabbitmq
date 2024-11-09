@@ -1,5 +1,9 @@
 import orderRepository from "../repositories/order.repository";
 import { rabbitmq } from "../utils/rabbitmq";
+import {
+  orderResult,
+  orderSchemaValidator,
+} from "../validators/order.validator";
 
 const orderServices = {
   getAllOrders: async () => {
@@ -10,12 +14,21 @@ const orderServices = {
     productName: String,
     price: Number,
     sellerName: String
-  ) => {
+  ): Promise<orderResult> => {
     const createOrders = await orderRepository.createOrders(
       productName,
       price,
       sellerName
     );
+    const dataValidation = orderSchemaValidator.safeParse({
+      productName,
+      price,
+      sellerName,
+    });
+    if (!dataValidation.success) {
+      return { error: dataValidation.error.issues };
+    }
+
     const channel = await rabbitmq();
     channel.sendToQueue(
       "orderCreated",
@@ -23,7 +36,7 @@ const orderServices = {
     );
     console.log(`Message send to Rabbitmq: ${JSON.stringify(createOrders)}`);
 
-    return createOrders;
+    return { data: createOrders };
   },
 
   deleteOrder: async (orderId: string) => {
