@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { env } from "../utils/env";
 
 export async function middlewareCheckOrigin(
   req: Request,
@@ -7,7 +8,7 @@ export async function middlewareCheckOrigin(
 ) {
   console.log(req.headers.host);
 
-  if (req.headers.host === "localhost:3003") {
+  if (req.headers.host === `${env.ORDERS_SERVICE_HOST}:3003`) {
     return next();
   }
   console.log(req.headers.host);

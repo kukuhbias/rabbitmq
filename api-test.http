@@ -1,8 +1,11 @@
 ### GET ALL ORDERS
 GET http://localhost:3003/orders/
 
+### GET ALL ORDERS ON SERVER
+GET http://103.49.238.82:3003/orders/
+
 ### GET ALL ORDERS
-GET http://localhost:8010
+GET http://103.49.238.82:8010
 
 
 ### CREATE ORDERS
