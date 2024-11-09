@@ -8,6 +8,8 @@ services:
 
   notification-services:
     build: ./notifications
+    depends_on:
+      - rabbitmq
     ports:
       - "8011:8011"
     env_file:
