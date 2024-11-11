@@ -22,12 +22,26 @@ services:
     env_file:
       - ./orders/.env
 
+  user-services:
+    build: ./users
+    ports:
+      - "8012:8012"
+    env_file:
+      - ./users/.env
+
   mongo-orders:
     image: mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo-orders:/data/db
+
+  mongo-users:
+    image: mongo
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo-users:/data/db
 
   mongo-notifications:
     image: mongo
@@ -45,3 +59,4 @@ services:
 volumes:
   mongo-orders:
   mongo-notifications:
+  mongo-users:

@@ -9,15 +9,29 @@ GET http://103.49.238.82:8010
 
 
 ### CREATE ORDERS
-POST http://localhost:3003/orders/
+POST http://103.49.238.82:3003/orders/
 Content-Type: application/json
 
 {
-    "productName": "New Kindle",
-    "price": "991000",
-    "sellerName": "Edi S"
+    "productName": "Samsung",
+    "price": 21111,
+    "sellerName": "SamsiulS"
 }
 
 ### DELETE ORDERS
-DELETE http://localhost:3003/orders/delete/67209b047f20ea4f0f62ea18
+DELETE http://103.49.238.82:3003/orders/delete/672f4c95d9e6e24adbdb5a0d
 Authorization: secret
+
+
+### GET ALL USERS
+GET http://localhost:3003/users/
+
+### CREATE USER
+POST http://localhost:3003/users/
+Content-Type: application/json
+
+{
+    "username": "1",
+    "email": "edisus2@gmail.com",
+    "password": "kukuhbias"
+}

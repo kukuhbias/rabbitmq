@@ -6,4 +6,5 @@ export const env = cleanEnv(process.env, {
   API_GATEWAY_HOST: str(),
   NOTIFICATIONS_SERVICE_HOST: str(),
   ORDERS_SERVICE_HOST: str(),
+  USERS_SERVICE_HOST: str(),
 });
